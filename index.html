@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8">
+    	<meta name="description" content="Matrix Wordle">
+    	<meta name="keywords" content="Matrix Wordle Clone">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+		<title>Matrix Wordle</title>
+
+		<!-- external CSS link -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Revalia&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+
+		<canvas id="matrix-canvas"></canvas>
+		
+		<h1>MATRIX WORDLE</h1>
+
+		<!-- How to Play Modal -->
+	<div id="how-to-play-modal" class="modal">
+		<div class="modal-content">
+			<div class="closeX">
+				<button id="close-how-to-play">X</button>
+			</div>
+			<h2>How to Play</h2>
+			<p>Guess the 5-letter word in 6 tries.</p>
+			<p>Each guess must be a valid word. Hit Enter to submit.</p>
+			<p>After each guess, the color of the tiles will change to show how close your guess was.</p>
+			<div class="example-row">
+				<div class="example-tile green">W</div>
+				<div class="example-tile">O</div>
+				<div class="example-tile">R</div>
+				<div class="example-tile">D</div>
+				<div class="example-tile">S</div>
+			</div>
+			<p><span class="green-box"></span> Green = Correct letter in the correct spot.</p>
+			<div class="example-row">
+				<div class="example-tile">T</div>
+				<div class="example-tile">R</div>
+				<div class="example-tile yellow">I</div>
+				<div class="example-tile">E</div>
+				<div class="example-tile">S</div>
+			</div>
+			<p><span class="yellow-box"></span> Yellow = Correct letter in the wrong spot.</p>
+			<div class="example-row">
+				<div class="example-tile">F</div>
+				<div class="example-tile gray">L</div>
+				<div class="example-tile">A</div>
+				<div class="example-tile">S</div>
+				<div class="example-tile">H</div>
+			</div>
+			<p><span class="gray-box"></span> Gray = Letter not in the word.</p>
+		</div>
+	</div>
+	
+	<div id="invalid-word-notification">Invalid Word</div>
+
+		<div class="grid">
+			<!-- 6 rows, 5 columns -->
+			<div class="tile" data-row="0" data-col="0"></div>
+			<div class="tile" data-row="0" data-col="1"></div>
+			<div class="tile" data-row="0" data-col="2"></div>
+			<div class="tile" data-row="0" data-col="3"></div>
+			<div class="tile" data-row="0" data-col="4"></div>
+			<!-- Repeat for 6 rows -->
+			<div class="tile" data-row="1" data-col="0"></div>
+			<div class="tile" data-row="1" data-col="1"></div>
+			<div class="tile" data-row="1" data-col="2"></div>
+			<div class="tile" data-row="1" data-col="3"></div>
+			<div class="tile" data-row="1" data-col="4"></div>
+			<!-- Repeat -->
+			<div class="tile" data-row="2" data-col="0"></div>
+			<div class="tile" data-row="2" data-col="1"></div>
+			<div class="tile" data-row="2" data-col="2"></div>
+			<div class="tile" data-row="2" data-col="3"></div>
+			<div class="tile" data-row="2" data-col="4"></div>
+			<!-- Repeat -->
+			<div class="tile" data-row="3" data-col="0"></div>
+			<div class="tile" data-row="3" data-col="1"></div>
+			<div class="tile" data-row="3" data-col="2"></div>
+			<div class="tile" data-row="3" data-col="3"></div>
+			<div class="tile" data-row="3" data-col="4"></div>
+			<!-- Repeat -->
+			<div class="tile" data-row="4" data-col="0"></div>
+			<div class="tile" data-row="4" data-col="1"></div>
+			<div class="tile" data-row="4" data-col="2"></div>
+			<div class="tile" data-row="4" data-col="3"></div>
+			<div class="tile" data-row="4" data-col="4"></div>
+			<!-- Repeat -->
+			<div class="tile" data-row="5" data-col="0"></div>
+			<div class="tile" data-row="5" data-col="1"></div>
+			<div class="tile" data-row="5" data-col="2"></div>
+			<div class="tile" data-row="5" data-col="3"></div>
+			<div class="tile" data-row="5" data-col="4"></div>
+		  </div>
+			
+			<!-- On-Screen Keyboard -->
+			<div class="keyboard">
+			  <div class="keyboard-row">
+				<div class="key">Q</div>
+				<div class="key">W</div>
+				<div class="key">E</div>
+				<div class="key">R</div>
+				<div class="key">T</div>
+				<div class="key">Y</div>
+				<div class="key">U</div>
+				<div class="key">I</div>
+				<div class="key">O</div>
+				<div class="key">P</div>
+			  </div>
+			  <div class="keyboard-row">
+				<div class="key">A</div>
+				<div class="key">S</div>
+				<div class="key">D</div>
+				<div class="key">F</div>
+				<div class="key">G</div>
+				<div class="key">H</div>
+				<div class="key">J</div>
+				<div class="key">K</div>
+				<div class="key">L</div>
+			  </div>
+			  <div class="keyboard-row">
+				<div class="key backspace">Back</div>
+				<div class="key">Z</div>
+				<div class="key">X</div>
+				<div class="key">C</div>
+				<div class="key">V</div>
+				<div class="key">B</div>
+				<div class="key">N</div>
+				<div class="key">M</div>
+				<div class="key enter">Enter</div>
+			  </div>
+			</div>
+		</div>
+
+		<div id="youtube-player" style="visibility: hidden;"></div>
+		<div class="music-player">
+
+			<div class="player-content">
+
+				<div class="keanuHolder">
+					<img class="profile-image" src="the-matrix-code-keanu-reeves.avif" alt="Track Image">
+				</div>
+
+				<div class="controls">
+					<button id="play-btn" class="control-btn">▶</button>
+				</div>
+
+				<div class="progress-section">
+					<div class="time">
+						<span id="current-time">0:00</span>
+						<input id="progress-bar" type="range" min="0" max="100" value="0">
+						<span id="total-time">0:00</span>
+					</div>
+				</div>
+
+			</div>
+
+			<span class = "surelyKnott">a little creation by surelyknott</span>
+		</div>
+	
+		<div id="result-modal" class="modal">
+			<div class="modal-content">
+			  <h2 id="result-message"></h2>
+			  <button id="play-again">Play Again</button>
+			</div>
+		  </div>
+	
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>
