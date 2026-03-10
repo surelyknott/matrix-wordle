@@ -26,11 +26,8 @@ Matrix Wordle is a Matrix-themed spin on the popular NY Times word game. I wante
    ```bash
    git clone <https://github.com/surelyknott/matrix-wordle>
    ```
-2. Open the project folder:
-   ```bash
-   cd WORDLE
-   ```
-3. Launch `index.html` in your browser.
+2. Navigate into the project folder.
+3. Open `index.html` in your browser.
 
 No build tools or install step required.
 
