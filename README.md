@@ -2,7 +2,7 @@
 
 ![Gameplay GIF Placeholder](./gifs/matrix-test-master.gif)
 
-A Matrix-themed Wordle clone built with vanilla HTML, CSS, and JavaScript.
+Matrix Wordle is a Matrix-themed spin on the popular NY Times word game. I wanted to test whether I could recreate Wordle’s mechanics from scratch.
 
 ## Features
 
