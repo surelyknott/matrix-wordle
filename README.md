@@ -45,20 +45,6 @@ No build tools or install step required.
   - Gray: letter not in the target word
 - You have 6 total attempts.
 
-## Project Structure
-
-```text
-WORDLE/
-├── index.html
-├── css/
-│   ├── style.css
-│   ├── normalize.css
-│   └── reset.css
-├── js/
-│   └── main.js
-└── the-matrix-code-keanu-reeves.avif
-```
-
 ## Notes
 
 - The current valid-word list is local and defined in `js/main.js`.
