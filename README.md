@@ -1,7 +1,6 @@
 # Matrix Wordle
 
-![Gameplay GIF Placeholder](./assets/matrix-wordle-demo.gif)
-<!-- Replace the path above with your real GIF file -->
+![Gameplay GIF Placeholder](./gifs/matrix-test-master.gif)
 
 A Matrix-themed Wordle clone built with vanilla HTML, CSS, and JavaScript.
 
