@@ -24,7 +24,7 @@ Matrix Wordle is a Matrix-themed spin on the popular NY Times word game. I wante
 
 1. Clone this repo:
    ```bash
-   git clone <your-repo-url>
+   git clone <https://github.com/surelyknott/matrix-wordle>
    ```
 2. Open the project folder:
    ```bash
